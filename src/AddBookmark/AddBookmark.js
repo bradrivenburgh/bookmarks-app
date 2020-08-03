@@ -1,6 +1,6 @@
 import React, { Component } from  'react';
-import config from '../config';
 import BookmarksContext from '../BookmarksContext';
+import config from '../config'
 import './AddBookmark.css';
 
 const Required = () => (
@@ -8,10 +8,11 @@ const Required = () => (
 )
 
 class AddBookmark extends Component {
+  static contextType = BookmarksContext;
+
   state = {
     error: null,
   };
-  static contextType = BookmarksContext;
 
   handleSubmit = e => {
     e.preventDefault()
@@ -47,10 +48,11 @@ class AddBookmark extends Component {
         url.value = ''
         description.value = ''
         rating.value = ''
-        this.props.history.push('/')
         this.context.addBookmark(data)
+        this.props.history.push('/')
       })
       .catch(error => {
+        console.log(error)
         this.setState({ error })
       })
   }
