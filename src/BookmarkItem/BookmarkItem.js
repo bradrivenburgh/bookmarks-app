@@ -3,6 +3,7 @@ import Rating from '../Rating/Rating';
 import BookmarksContext from '../BookmarksContext';
 import config from '../config';
 import './BookmarkItem.css';
+import propTypes from 'prop-types';
 
 function deleteBookmarkRequest(bookmarkId, cb) {
   fetch(config.API_ENDPOINT + `/${bookmarkId}`, {
@@ -69,6 +70,15 @@ export default function BookmarkItem(props) {
   )
 }
 
+BookmarkItem.propTypes = {
+  title: propTypes.string.isRequired,
+  url: propTypes.string.isRequired,
+  rating: propTypes.string,
+  description: propTypes.string,
+}
+
 BookmarkItem.defaultProps = {
   onClickDelete: () => {},
+  rating: 1,
+  description: "",
 }
