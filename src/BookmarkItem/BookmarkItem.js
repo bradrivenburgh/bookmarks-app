@@ -71,7 +71,7 @@ export default function BookmarkItem(props) {
 }
 
 BookmarkItem.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   url: (props, propName, componentName) => {
     // get the value of the prop
     const prop = props[propName];
