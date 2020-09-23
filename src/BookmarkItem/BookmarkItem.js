@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Rating from '../Rating/Rating';
 import BookmarksContext from '../BookmarksContext';
 import config from '../config';
@@ -23,7 +24,6 @@ function deleteBookmarkRequest(bookmarkId, cb) {
       }
     })
     .then((data) => {
-      console.log({ data });
       cb(bookmarkId);
     })
     .catch((error) => {
@@ -32,6 +32,7 @@ function deleteBookmarkRequest(bookmarkId, cb) {
 }
 
 export default function BookmarkItem(props) {
+  const rating = parseInt(props.rating) // added to convert rating to number if string
   return (
     <BookmarksContext.Consumer>
       {(context) => (
@@ -45,12 +46,17 @@ export default function BookmarkItem(props) {
                 {props.title}
               </a>
             </h3>
-            <Rating value={props.rating} />
+            <Rating value={rating} />
           </div>
           <p className='BookmarkItem__description'>
             {props.description}
           </p>
           <div className='BookmarkItem__buttons'>
+            <Link to={`/edit/${props.id}` }>
+              <button style={{"marginRight":".5em"}}>
+                Edit Bookmark
+              </button>
+            </Link>
             <button
               className='BookmarkItem__description'
               onClick={() => {
