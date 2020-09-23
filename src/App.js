@@ -49,6 +49,7 @@ class App extends Component {
         if (!res.ok) {
           throw new Error(res.status)
         }
+
         return res.json()
       })
       .then(this.setBookmarks)
