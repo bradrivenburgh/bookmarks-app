@@ -56,7 +56,7 @@ class App extends Component {
         if (!res.ok) {
           throw new Error(res.status)
         }
-
+//        console.log(res.json())
         return res.json()
       })
       .then(this.setBookmarks)

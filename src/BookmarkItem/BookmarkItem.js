@@ -32,7 +32,6 @@ function deleteBookmarkRequest(bookmarkId, cb) {
 }
 
 export default function BookmarkItem(props) {
-  const rating = parseInt(props.rating) // added to convert rating to number if string
   return (
     <BookmarksContext.Consumer>
       {(context) => (
@@ -46,7 +45,7 @@ export default function BookmarkItem(props) {
                 {props.title}
               </a>
             </h3>
-            <Rating value={rating} />
+            <Rating value={props.rating} />
           </div>
           <p className='BookmarkItem__description'>
             {props.description}
@@ -76,7 +75,7 @@ export default function BookmarkItem(props) {
 }
 
 BookmarkItem.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   url: (props, propName, componentName) => {
     // get the value of the prop
     const prop = props[propName];
@@ -97,7 +96,7 @@ BookmarkItem.propTypes = {
       return new Error(`Invalid prop, ${propName} must be min length 5 and begin http(s)://. Validation Failed.`);
     }
   },
-  rating: PropTypes.number,
+  rating: PropTypes.number.isRequired,
   description: PropTypes.string,
 }
 

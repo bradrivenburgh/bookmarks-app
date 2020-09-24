@@ -78,7 +78,7 @@ class EditBookmark extends Component {
     e.preventDefault()
     const { bookmarkId } = this.props.match.params
     const { id, title, url, description, rating } = this.state
-    const newBookmark = { id, title, url, description, rating }
+    const newBookmark = { id, title, url, description, rating: parseInt(rating) }
     fetch(config.API_ENDPOINT + `/${bookmarkId}`, {
       method: 'PATCH',
       body: JSON.stringify(newBookmark),
