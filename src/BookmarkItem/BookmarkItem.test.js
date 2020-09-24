@@ -4,16 +4,25 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom'
 import BookmarkItem from './BookmarkItem';
 
-// it('renders without crashing', () => {
-//   const div = document.createElement('div');
-//   ReactDOM.render(<BrowserRouter><BookmarkItem /></BrowserRouter>, div);
-//   ReactDOM.unmountComponentAtNode(div);
-// });
+const bookmark = {
+  id: 1,
+  title: 'title',
+  url: 'https://www.url.com',
+  description: 'description',
+  rating: 3,
+}
+const { id, title, url, description, rating} = bookmark;
 
 test('renders without crashing - react-testing-library', () => {
   render(
     <BrowserRouter>
-      <BookmarkItem />
+      <BookmarkItem 
+        id={id}
+        title={title}
+        url={url}
+        description={description}
+        rating={rating}
+      />
     </BrowserRouter>
   );
 });
