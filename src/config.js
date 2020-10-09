@@ -1,4 +1,4 @@
 export default {
-  API_ENDPOINT: "https://thawing-hollows-57701.herokuapp.com/",
+  API_ENDPOINT: process.env.API_ENDPOINT,
   API_KEY: process.env.REACT_APP_API_KEY,
 }
